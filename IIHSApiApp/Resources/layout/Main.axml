@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="123.5dp"
+        android:id="@+id/iihslogo"
+        android:src="@drawable/logohq"
+        android:scaleType="fitCenter"
+        android:layout_marginBottom="20.0dp"
+        android:layout_marginRight="20.0dp"
+        android:layout_marginLeft="20.0dp"
+        android:layout_marginTop="20.0dp" />
+    <TextView
+        android:text="IIHS API App"
+        android:textSize="32sp"
+        android:fontFamily="sans-serif-medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/AppTitle"
+        android:layout_marginLeft="40.0dp"
+        android:layout_marginRight="40.0dp"
+        android:layout_marginTop="5.0dp"
+        android:layout_marginBottom="10.0dp" />
+    <Button
+        android:text="@string/enterButton"
+        android:textSize="25sp"
+        android:fontFamily="sans-serif-medium"
+        android:layout_width="147.0dp"
+        android:layout_height="74.5dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/enterButton"
+        android:layout_marginTop="60.0dp" />
+</LinearLayout>

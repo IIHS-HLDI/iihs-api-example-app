@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:background="#FAFAFA"
+    android:orientation="vertical">
+    <ImageView
+        android:layout_width="fill_parent"
+        android:id="@+id/iihslogo"
+        android:src="@drawable/logohq"
+        android:layout_marginTop="16.0dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_gravity="bottom"
+        android:layout_height="112.0dp" />
+</LinearLayout>

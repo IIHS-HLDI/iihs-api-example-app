@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rowCount="1"
+        android:columnCount="4"
+        android:padding="16dp"
+        android:layout_gravity="center"
+        android:id="@+id/gampGrid">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:id="@+id/linearLayoutGood"
+            android:padding="5dp">
+            <ImageView
+                android:id="@+id/gamp_g"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:src="@drawable/g" />
+            <TextView
+                android:text="ood"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewGood"
+                android:layout_gravity="bottom"
+                android:textColor="#000000"
+                android:layout_marginLeft="2.0dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/linearLayoutAcceptable"
+            android:padding="5dp">
+            <ImageView
+                android:id="@+id/gamp_a"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:src="@drawable/a" />
+            <TextView
+                android:text="cceptable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewAcceptable"
+                android:layout_gravity="bottom"
+                android:textColor="#000000"
+                android:layout_marginLeft="2.0dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:id="@+id/linearLayoutMarginal"
+            android:padding="5dp">
+            <ImageView
+                android:id="@+id/gamp_m"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:src="@drawable/m" />
+            <TextView
+                android:text="arginal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewMarginal"
+                android:layout_gravity="bottom"
+                android:textColor="#000000"
+                android:layout_marginLeft="2.0dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:id="@+id/linearLayoutPoor"
+            android:padding="5dp">
+            <ImageView
+                android:id="@+id/gamp_p"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:src="@drawable/p" />
+            <TextView
+                android:text="oor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewPoor"
+                android:layout_gravity="bottom"
+                android:textColor="#000000"
+                android:layout_marginLeft="2.0dp" />
+        </LinearLayout>
+    </GridLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:id="@+id/scrollView1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:id="@+id/testInfoLayout">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/tspsPlusLayout">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:id="@+id/tspsPlusTitleLayout"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="10.0dp"
+                        android:id="@+id/linearLayout4">
+                        <TextView
+                            android:text="2017 "
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#000000"
+                            android:id="@+id/textView12" />
+                        <TextView
+                            android:text="TOP SAFETY PICK+"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textStyle="italic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#000000"
+                            android:id="@+id/textView13" />
+                        <TextView
+                            android:text=" criteria"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#000000"
+                            android:id="@+id/textView14" />
+                    </LinearLayout>
+                    <ImageView
+                        android:layout_width="50.0dp"
+                        android:layout_height="33.0dp"
+                        android:src="@drawable/tspMedPlus"
+                        android:id="@+id/imageView2" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="20.0dp"
+                    android:id="@+id/linearLayout5">
+                    <TextView
+                        android:text="•  Good ratings in five IIHS tests:"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView15" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="10.0dp"
+                        android:id="@+id/linearLayout6">
+                        <TextView
+                            android:text="- small overlap front"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView16" />
+                        <TextView
+                            android:text="- moderate overlap front"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView17" />
+                        <TextView
+                            android:text="- side"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView18" />
+                        <TextView
+                            android:text="- roof strength"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView19" />
+                        <TextView
+                            android:text="- head restraints"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView20" />
+                    </LinearLayout>
+                    <TextView
+                        android:text="•  An advanced or superior rating for front crash prevention"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView21" />
+                    <TextView
+                        android:text="•  An acceptable or good rating for headlights"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView22" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/tspsPlusLayout">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:id="@+id/tspsTitleLayout"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="10.0dp">
+                        <TextView
+                            android:text="2017 "
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#000000" />
+                        <TextView
+                            android:text="TOP SAFETY PICK"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textStyle="italic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#000000" />
+                        <TextView
+                            android:text=" criteria"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#000000" />
+                    </LinearLayout>
+                    <ImageView
+                        android:layout_width="50.0dp"
+                        android:layout_height="33.0dp"
+                        android:src="@drawable/tspMedStan"
+                        android:id="@+id/imageView3" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="20.0dp">
+                    <TextView
+                        android:text="•  Good ratings in five IIHS tests:"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="10.0dp">
+                        <TextView
+                            android:text="- small overlap front"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:text="- moderate overlap front"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:text="- side"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:text="- roof strength"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:text="- head restraints"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <TextView
+                        android:text="•  An advanced or superior rating for front crash prevention"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/smallOverlapFrontTestLayout"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
+                <TextView
+                    android:text="Small overlap front crash tests"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                <TextView
+                    android:text="assess occupant protection and vehicles' structural designs when most of the front crumple zone is bypassed. Frontal crash test ratings can be compared only among vehicles of similar weight."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/moderateOverlapFrontTestLayout"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
+                <TextView
+                    android:text="Moderate overlap front crash tests"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                <TextView
+                    android:text="assess occupant protection and vehicles' structural designs when part of the front crumple zone is engaged. Frontal crash test ratings can be compared only among vehicles of similar weight. Once a vehicle achieves a good moderate overlap frontal rating, IIHS may assign ratings for later models based on data and footage from the manufacturer's own tests. IIHS conducts audit tests to confirm manufacturer results."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/sideTestLayout"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
+                <TextView
+                    android:text="Side crash tests"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                <TextView
+                    android:text="are good assessments of occupant protection when vehicles are struck in the side by SUVs or pickups. Once a vehicle achieves a good side rating, IIHS may assign ratings for later models based on data and footage from the manufacturer's own tests. IIHS conducts audit tests to confirm manufacturer results."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/roofStrengthTestLayout"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
+                <TextView
+                    android:text="Roof strength ratings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                <TextView
+                    android:text="assess protection in rollover crashes. To measure roof strength, a metal plate is pushed against one corner of a vehicle's roof at a constant speed. The maximum force sustained by the roof before it caves in 5 inches is compared with the vehicle's weight."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/headRestraintTestLayout"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
+                <TextView
+                    android:text="Head restraint ratings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                <TextView
+                    android:text="focus on how well seat/head restraint combinations protect against whiplash injury. Head restraint ratings can be compared only among vehicles of similar weight."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/frontCrashPreventionTestLayout"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
+                <TextView
+                    android:text="Front crash prevention ratings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                <TextView
+                    android:text="are based on the availability of forward collision warning and the performance of automatic braking systems in IIHS track tests."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/headlightTestLayout"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
+                <TextView
+                    android:text="The headlight rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                <TextView
+                    android:text="is based on the illumination provided by a vehicle's headlights on straight roads and curves. Each rating applies to a specific headlight type."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/childseatTestLayout"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
+                <TextView
+                    android:text="The child seat anchors (LATCH)"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                <TextView
+                    android:text="ratings are based on ease-of-use evaluations of vehicle hardware for installing child restraints."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp" />
+            </LinearLayout>
+            <Button
+                android:text="Visit the full website for more info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20.0dp"
+                android:layout_marginBottom="20.0dp"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/iihsWebsiteButton" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <item
+       android:id="@+id/help_search"
+       android:icon="@drawable/ic_search"
+       android:title="Search" />
+  <item
+       android:id="@+id/google_play"
+       android:showAsAction="never"
+       android:title="View in Google Play Store" />
+  <item
+       android:id="@+id/version_info"
+       android:showAsAction="never"
+       android:title="Version info" />
+  <item
+       android:id="@+id/privacy_policy"
+       android:showAsAction="never"
+       android:title="Privacy Policy" />
+  <item
+       android:id="@+id/tos"
+       android:showAsAction="never"
+       android:title="Terms of Service" />
+</menu>

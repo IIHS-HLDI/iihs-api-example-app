@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <group
+    android:id="@+id/nav_menu_info"
+    android:checkableBehavior="single">
+    <item
+      android:id="@+id/ratingsInfo"
+      android:icon="@drawable/ic_info"
+      android:title="Understanding Our Ratings" />
+  </group>
+  <group
+    android:id="@+id/nav_menu_top"
+    android:checkableBehavior="single">
+    <item
+      android:id="@+id/makeModel"
+      android:icon="@drawable/ic_car"
+      android:title="Browse by Make/Model" />
+    <item
+      android:id="@+id/typeSize"
+      android:icon="@drawable/ic_car"
+      android:title="Browse by Type/Size" />
+    <item
+      android:id="@+id/teens"
+      android:icon="@drawable/ic_person"
+      android:title="Vehicles for Teens" />
+  </group>
+  <group
+    android:id="@+id/nav_menu_bottom"
+    android:checkableBehavior="single">
+    <item
+      android:id="@+id/appInfo"
+      android:title="About" />
+    <!--<item
+      android:id="@+id/appSettings"
+      android:icon="@drawable/ic_settings"
+      android:title="Settings" />-->
+    <!--<item
+      android:id="@+id/helpFeedback"
+      android:icon="@drawable/ic_help"
+      android:title="Help &amp; feedback" />-->
+  </group>
+</menu>
