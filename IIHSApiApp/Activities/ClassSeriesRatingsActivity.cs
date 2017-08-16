@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using IIHSApiApp.Services;
 using IIHSApiApp.Models;
 using IIHSApiApp.Framework;
-using Android.Support.V7.Widget;
 using Android.Views;
 
 namespace IIHSApiApp.Activities
@@ -26,8 +25,7 @@ namespace IIHSApiApp.Activities
         private string year;
         private Spinner yearSelectButton;
         private List<Year> yearsList;
-
-        //private ExpandableListViewAdapter mAdapter;
+        
         private ExpandableListView expandableListView;
 
         protected override int LayoutResource => Resource.Layout.ClassSeriesRatingsLayout;
@@ -51,10 +49,7 @@ namespace IIHSApiApp.Activities
             this.SupportActionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_close);
 
             expandableListView = FindViewById<ExpandableListView>(Resource.Id.expandableListView);            
-
-            //expandableListView.ChildClick += (s, e) => {
-            //    Toast.MakeText(this, "Clicked : " + ((ExpandableListViewAdapter)this.expandableListView.Adapter).GetChild(e.GroupPosition, e.ChildPosition), ToastLength.Short).Show();
-            //};
+            
 
             if (this.AssertConnected())
             {
@@ -71,7 +66,7 @@ namespace IIHSApiApp.Activities
                 }
             }
 
-            var data = await service.GetClassSeriesRatings(this.year, this.makeSlug, this.seriesSlug);
+            var data = await service.GetSeriesRatings(this.year, this.makeSlug, this.seriesSlug);
             expandableListView.SetAdapter(ExpandableListViewAdapter.CreateFromData(this, data));            
         }
         private async Task loadYearSpinner()
@@ -115,12 +110,5 @@ namespace IIHSApiApp.Activities
         }
     }
 
-    public class RatingGroupHeader
-    {
-        public string Text { get; set; }
-        public int ImageResourceId { get; set; }
-        public ETestTypes TestType { get; set; }
-        public string RatingText { get; set; }
-        public string RatingSubtext { get; set; }
-    }
+  
 }

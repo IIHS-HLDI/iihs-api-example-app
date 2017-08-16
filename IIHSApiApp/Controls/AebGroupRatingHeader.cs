@@ -1,10 +1,11 @@
 ﻿using Android.Views;
 using Android.Widget;
 using IIHSApiApp.Activities;
+using IIHSApiApp.Models;
 
 namespace IIHSApiApp.Controls
 {
-    public class AebGroupRatingHeader:GroupControlHeader<RatingGroupHeader>
+    public class AebGroupRatingHeader:GroupControl<RatingGroupHeader>
     {
         public override int LayoutId
         {
@@ -14,10 +15,10 @@ namespace IIHSApiApp.Controls
             }
         }
 
-        public override void RenderView(View view, RatingGroupHeader model)
+        protected override void RenderView(View view, RatingGroupHeader model)
         {
             this.UpdateText(view, Resource.Id.aebText, model.RatingText);
-            this.UpdateText(view, Resource.Id.aebSubtext, model.RatingSubtext);
+            this.UpdateText(view, Resource.Id.aebSubtext, model.QualifyingText);
             this.UpdateImage(view, Resource.Id.carating, model.ImageResourceId);
             this.UpdateText(view, Resource.Id.group, model.Text);            
         }

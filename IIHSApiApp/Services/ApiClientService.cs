@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace IIHSApiApp.Services
 {
+    /// <summary>
+    /// Uses an http client to make requests to http://api.iihs.org/v4.  
+    /// </summary>
     public class ApiClientService
     {
         HttpClient client;
@@ -20,6 +23,12 @@ namespace IIHSApiApp.Services
             rootUrl = "https://api.iihs.org/v4/";
         }
 
+        /// <summary>
+        /// Requests json responses from server and deserializes them into the provided datatype.  The provided datatype should match the json response object shape for it to be successful.
+        /// </summary>
+        /// <typeparam name="T">DataType that json response is deserialized to</typeparam>
+        /// <param name="url">The api v4 service call url.  For example "ratings/all-classes"</param>
+        /// <returns>Typed result of web service request</returns>
         public async Task<T> GetAsync<T>(string url)
         {
             var apiUrl = $"{this.rootUrl}{url}";

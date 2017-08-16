@@ -5,7 +5,7 @@ namespace IIHSApiApp.Controls
 {
     public static class RatingGroupHeaderFactory
     {
-        public static GroupControlHeader<RatingGroupHeader> Create(ETestTypes testType)
+        public static GroupControl<RatingGroupHeader> Create(ETestTypes testType)
         {
             switch (testType)
             {

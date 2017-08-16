@@ -1,0 +1,11 @@
+- Send each api request using a token instead of the key
+- Get expandable list view to automatically expand and collapse when a new group is selected
+- remove click event when expandable list view item is selected
+- cut app size to 20-40MB
+
+
+To be implimented:
+- create an svg scale to show where the vehicle shown ranks amongst the best rated car and the worst
+- create a widget that displays the top safety pick or something or displays this rss feed: http://feeds.feedburner.com/iihs
+- add a mode allowing for side-by-side comparison of two vehicles
+- add search ability to find a vehicle

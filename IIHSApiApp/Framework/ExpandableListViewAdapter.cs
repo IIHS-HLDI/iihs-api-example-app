@@ -20,9 +20,9 @@ namespace IIHSApiApp.Framework
     {
         private Context context;
         private List<RatingGroupHeader> listGroup;
-        private Dictionary<RatingGroupHeader, List<string>> lstChild;
+        private Dictionary<RatingGroupHeader, List<Java.Lang.Object>> lstChild;
 
-        public ExpandableListViewAdapter(Context context, List<RatingGroupHeader> listGroup, Dictionary<RatingGroupHeader, List<string>> lstChild)
+        public ExpandableListViewAdapter(Context context, List<RatingGroupHeader> listGroup, Dictionary<RatingGroupHeader, List<Java.Lang.Object>> lstChild)
         {
             this.context = context;
             this.listGroup = listGroup;
@@ -47,7 +47,7 @@ namespace IIHSApiApp.Framework
 
         public override Java.Lang.Object GetChild(int groupPosition, int childPosition)
         {
-            var result = new List<string>();
+            var result = new List<Java.Lang.Object>();
             lstChild.TryGetValue(listGroup[groupPosition], out result);
             return result[childPosition];
         }
@@ -59,21 +59,22 @@ namespace IIHSApiApp.Framework
 
         public override int GetChildrenCount(int groupPosition)
         {
-            var result = new List<string>();
+            var result = new List<Java.Lang.Object>();
             lstChild.TryGetValue(listGroup[groupPosition], out result);
-            return result.Count;
+
+            if (result == null)
+                return 0;
+            else
+                return result.Count;
         }
 
         public override View GetChildView(int groupPosition, int childPosition, bool isLastChild, View convertView, ViewGroup parent)
         {
-            if (convertView == null)
-            {
-                LayoutInflater inflater = (LayoutInflater)context.GetSystemService(Context.LayoutInflaterService);
-                convertView = inflater.Inflate(Resource.Layout.item_layout, null);
-            }
-            TextView textViewItem = convertView.FindViewById<TextView>(Resource.Id.item);
-            string content = (string)GetChild(groupPosition, childPosition);
-            textViewItem.Text = content;
+            Java.Lang.Object content = GetChild(groupPosition, childPosition);
+            var rowItem = RatingChildRowFactory.Create(content);            
+            LayoutInflater inflater = (LayoutInflater)context.GetSystemService(Context.LayoutInflaterService);
+            convertView = inflater.Inflate(rowItem.LayoutId, null);
+            rowItem.Render(convertView, content);            
             return convertView;
         }
 
@@ -98,7 +99,7 @@ namespace IIHSApiApp.Framework
             {
                 LayoutInflater inflater = (LayoutInflater)context.GetSystemService(Context.LayoutInflaterService);
                 convertView = inflater.Inflate(gh.LayoutId, null);
-                gh.RenderView(convertView, item);
+                gh.Render(convertView, item);
             }
             
             return convertView;
@@ -107,106 +108,130 @@ namespace IIHSApiApp.Framework
         public static ExpandableListViewAdapter CreateFromData(Context context, List<SeriesRatingsData> seriesRatingsData)
         {
             List<RatingGroupHeader> group = new List<RatingGroupHeader>();
-            Dictionary<RatingGroupHeader, List<string>> expandList = new Dictionary<RatingGroupHeader, List<string>>();
-
-            List<string> smallOverlapFront = new List<string>
-            {
-                "Overall evaluation",
-                "Structure and safety cage",
-                "Injury measures",
-                "Restraints and dummy kinematics"
-            };
-            List<string> moderateOverlapFront = new List<string>
-            {
-                "Overall evaluation",
-                "Structure and safety cage",
-                "Injury measures",
-                "Restraints and dummy kinematics"
-            };
-            List<string> side = new List<string>
-            {
-                "Overall evaluation",
-                "Structure and safety cage",
-                "Injury measures",
-                "Restraints and dummy kinematics"
-            };
-            List<string> roofStrength = new List<string>
-            {
-                "Overall evaluation",
-                "Curb weight",
-                "Peak force",
-                "Strength-to-weight ratio",
-                "Tested vehicle"
-            };
-            List<string> headRestraint = new List<string>
-            {
-                "Overall evaluation",
-                "Dynamic rating",
-                "Seat/head restraint geometry"
-            };
-            List<string> frontCrashPrevention = new List<string>
-            {
-                "Overall evaluation",
-                "Forward collision warning",
-                "Low-speed autobrake",
-                "High-speed autobrake"
-            };
-            List<string> headlights = new List<string>
-            {
-                "Trim level(s)",
-                "Low-beam headlight type",
-                "High-beam headlight type",
-                "Curve-adaptive?",
-                "Automatically switches between low beams and high beams (high-beam assist)?",
-                "Overall evaluation",
-                "Distance at which headlights provide at least 5 lux illumination:",
-                "Low beams",
-                "High beams"
-            };
-
+            Dictionary<RatingGroupHeader, List<Java.Lang.Object>> expandList = new Dictionary<RatingGroupHeader, List<Java.Lang.Object>>();
+            
             var firstSeries = seriesRatingsData.First();
 
             FrontalRatingsSmallOverlap ratingForPrimarySmallOverlapFront = firstSeries.frontalRatingsSmallOverlap.Where(w => w.isPrimary == true).FirstOrDefault();
-            group.Add(new RatingGroupHeader { TestType = ETestTypes.SmallOverlap, Text = "Small overlap front:", ImageResourceId = UiHelper.GetResourceGamp(ratingForPrimarySmallOverlapFront?.overallRating) });
+            var smallOverlapGh = new RatingGroupHeader { TestType = ETestTypes.SmallOverlap, QualifyingText = ratingForPrimarySmallOverlapFront?.qualifyingText, Text = "Small overlap front", ImageResourceId = UiHelper.GetResourceGamp(ratingForPrimarySmallOverlapFront?.overallRating) };
+            group.Add(smallOverlapGh);
+
+            List<Java.Lang.Object> smallOverlapFront = new List<Java.Lang.Object>
+            {                
+                new GampChildRowItem { Text = "Structure and safety cage", GampResourceId = UiHelper.GetResourceGamp(ratingForPrimarySmallOverlapFront?.structureRating)},
+                new GampChildRowItem { Text = "Injury measures - head/neck", GampResourceId = UiHelper.GetResourceGamp(ratingForPrimarySmallOverlapFront?.headNeckRating)},
+                new GampChildRowItem { Text = "Injury measures - chest", GampResourceId = UiHelper.GetResourceGamp(ratingForPrimarySmallOverlapFront?.chestRating)},
+                new GampChildRowItem { Text = "Injury measures - hip/thigh", GampResourceId = UiHelper.GetResourceGamp(ratingForPrimarySmallOverlapFront?.femurPelvisRating)},
+                new GampChildRowItem { Text = "Injury measures - lower leg/foot", GampResourceId = UiHelper.GetResourceGamp(ratingForPrimarySmallOverlapFront?.footTibiaRating)},
+                new GampChildRowItem { Text = "Restraints and dummy kinematics", GampResourceId = UiHelper.GetResourceGamp(ratingForPrimarySmallOverlapFront?.kinematicsRating)},
+            };
 
             FrontalRatingsModerateOverlap ratingForPrimaryModerateOverlapFront = firstSeries.frontalRatingsModerateOverlap.Where(w => w.isPrimary == true).FirstOrDefault();
-            group.Add(new RatingGroupHeader { TestType = ETestTypes.Frontal, Text = "Moderate overlap front:", ImageResourceId = UiHelper.GetResourceGamp(ratingForPrimaryModerateOverlapFront?.overallRating) });
+            var frontalGh = new RatingGroupHeader { TestType = ETestTypes.Frontal, QualifyingText = ratingForPrimaryModerateOverlapFront?.qualifyingText, Text = "Moderate overlap front", ImageResourceId = UiHelper.GetResourceGamp(ratingForPrimaryModerateOverlapFront?.overallRating) };
+            group.Add(frontalGh);
+
+            List<Java.Lang.Object> moderateOverlapFront = new List<Java.Lang.Object>
+            {                
+                new GampChildRowItem { Text = "Structure and safety cage", GampResourceId = UiHelper.GetResourceGamp(ratingForPrimaryModerateOverlapFront?.structureRating)},
+                new GampChildRowItem { Text = "Injury measures - head/neck", GampResourceId = UiHelper.GetResourceGamp(ratingForPrimaryModerateOverlapFront?.headNeckRating)},
+                new GampChildRowItem { Text = "Injury measures - chest", GampResourceId = UiHelper.GetResourceGamp(ratingForPrimaryModerateOverlapFront?.chestRating)},
+                new GampChildRowItem { Text = "Injury measures - leg/foot left", GampResourceId = UiHelper.GetResourceGamp(ratingForPrimaryModerateOverlapFront?.leftLegRating)},
+                new GampChildRowItem { Text = "Injury measures - leg/foot right", GampResourceId = UiHelper.GetResourceGamp(ratingForPrimaryModerateOverlapFront?.rightLegRating)},
+                new GampChildRowItem { Text = "Restraints and dummy kinematics", GampResourceId = UiHelper.GetResourceGamp(ratingForPrimaryModerateOverlapFront?.kinematicsRating)},
+            };
 
             SideRating ratingForPrimarySide = firstSeries.sideRatings.Where(w => w.isPrimary == true).FirstOrDefault();
-            group.Add(new RatingGroupHeader { TestType = ETestTypes.Side, Text = "Side:", ImageResourceId = UiHelper.GetResourceGamp(ratingForPrimarySide?.overallRating) });
+            var sideGh = new RatingGroupHeader { TestType = ETestTypes.Side, Text = "Side", QualifyingText = ratingForPrimarySide?.qualifyingText, ImageResourceId = UiHelper.GetResourceGamp(ratingForPrimarySide?.overallRating) };
+            group.Add(sideGh);
+            
+            List<Java.Lang.Object> side = new List<Java.Lang.Object>
+            {             
+                new GampChildRowItem { Text = "Structure and safety cage", GampResourceId = UiHelper.GetResourceGamp(ratingForPrimarySide?.structureRating)},
+                new GampChildRowItem { Text = "Driver injury measures - head/neck", GampResourceId = UiHelper.GetResourceGamp(ratingForPrimarySide?.driverHeadNeckRating)},
+                new GampChildRowItem { Text = "Driver injury measures - torso", GampResourceId = UiHelper.GetResourceGamp(ratingForPrimarySide?.driverTorsoRating)},
+                new GampChildRowItem { Text = "Driver injury measures - pelvis/leg", GampResourceId = UiHelper.GetResourceGamp(ratingForPrimarySide?.driverPelvisLegRating)},
+                new GampChildRowItem { Text = "Driver injury measures - head protection", GampResourceId = UiHelper.GetResourceGamp(ratingForPrimarySide?.driverHeadProtectionRating)},
+                new GampChildRowItem { Text = "Passenger injury measures - head/neck", GampResourceId = UiHelper.GetResourceGamp(ratingForPrimarySide?.passengerHeadNeckRating)},
+                new GampChildRowItem { Text = "Passenger injury measures - torso", GampResourceId = UiHelper.GetResourceGamp(ratingForPrimarySide?.passengerTorsoRating)},
+                new GampChildRowItem { Text = "Passenger injury measures - pelvis/leg", GampResourceId = UiHelper.GetResourceGamp(ratingForPrimarySide?.passengerPelvisLegRating)},
+                new GampChildRowItem { Text = "Passenger injury measures - head protection", GampResourceId = UiHelper.GetResourceGamp(ratingForPrimarySide?.passengerHeadProtectionRating)},
+            };
 
             RolloverRating ratingForPrimaryRoofStrength = firstSeries.rolloverRatings.Where(w => w.isPrimary == true).FirstOrDefault();
-            group.Add(new RatingGroupHeader { TestType = ETestTypes.RoofCrush, Text = "Roof strength:", ImageResourceId = UiHelper.GetResourceGamp(ratingForPrimaryRoofStrength?.overallRating) });
+            var roofGh = new RatingGroupHeader { TestType = ETestTypes.RoofCrush, Text = "Roof strength", QualifyingText = ratingForPrimaryRoofStrength?.qualifyingText, ImageResourceId = UiHelper.GetResourceGamp(ratingForPrimaryRoofStrength?.overallRating) };
+            group.Add(roofGh);
+            List<Java.Lang.Object> roofStrength = new List<Java.Lang.Object>();
 
+            if (ratingForPrimaryRoofStrength != null)
+            {
+                roofStrength = new List<Java.Lang.Object>
+                {
+                    new DataChildRowItem { Text = "Curb weight", Value = $"{ratingForPrimaryRoofStrength.weight} lbs" },
+                    new DataChildRowItem { Text = "Peak force", Value = $"{ratingForPrimaryRoofStrength.force} lbs" },
+                    new DataChildRowItem { Text = "Strength-to-weight ratio", Value = ratingForPrimaryRoofStrength?.ratio },
+                    new DataChildRowItem { Text = "Tested vehicle", Value = ratingForPrimaryRoofStrength?.testSubject },
+                };
+            }
+            
             RearRating ratingForPrimaryHeadRestraint = firstSeries.rearRatings.Where(w => w.isPrimary == true).FirstOrDefault();
-            group.Add(new RatingGroupHeader { TestType = ETestTypes.Rear, Text = "Head restraints & seats:", ImageResourceId = UiHelper.GetResourceGamp(ratingForPrimaryHeadRestraint?.overallRating) });
+            var rearGh = new RatingGroupHeader { TestType = ETestTypes.Rear, QualifyingText = ratingForPrimaryHeadRestraint?.qualifyingText, Text = "Head restraints & seats", ImageResourceId = UiHelper.GetResourceGamp(ratingForPrimaryHeadRestraint?.overallRating) };
+            group.Add(rearGh);  
+            
+            List<Java.Lang.Object> headRestraint = new List<Java.Lang.Object>
+            {             
+                new GampChildRowItem { Text = "Dynamic rating", GampResourceId = UiHelper.GetResourceGamp(ratingForPrimaryHeadRestraint?.dynamicRating)},
+                new GampChildRowItem { Text = "Seat/head restraint geometry", GampResourceId = UiHelper.GetResourceGamp(ratingForPrimaryHeadRestraint?.geometryRating)},
+            };
 
             FrontCrashPreventionRating ratingForPrimaryFrontCrashPrevention = firstSeries.frontCrashPreventionRatings.Where(w => w.isPrimary == true).FirstOrDefault();
 
+            RatingGroupHeader aebGh = null;
+            List<Java.Lang.Object> frontCrashPrevention = new List<Java.Lang.Object>();
+
             if (ratingForPrimaryFrontCrashPrevention != null)
             {
-                group.Add(new RatingGroupHeader { Text = "Front crash prevention:", ImageResourceId = UiHelper.GetResourceAeb(ratingForPrimaryFrontCrashPrevention.overallRating.totalPoints), RatingText = ratingForPrimaryFrontCrashPrevention?.overallRating.ratingText, RatingSubtext = ratingForPrimaryFrontCrashPrevention?.qualifyingText, TestType = ETestTypes.CrashAvoidance });
+                aebGh = new RatingGroupHeader { Text = "Front crash prevention", ImageResourceId = UiHelper.GetResourceAeb(ratingForPrimaryFrontCrashPrevention.overallRating.totalPoints), RatingText = ratingForPrimaryFrontCrashPrevention?.overallRating.ratingText, QualifyingText = ratingForPrimaryFrontCrashPrevention?.qualifyingText, TestType = ETestTypes.CrashAvoidance };
+                group.Add(aebGh);
+
+                frontCrashPrevention = new List<Java.Lang.Object>
+                {
+                    new DataChildRowItem { Text = "System Details", Value = (ratingForPrimaryFrontCrashPrevention.autobrake.availability + " " + ratingForPrimaryFrontCrashPrevention.autobrake.systemName) },
+                    new DataChildRowItem { Text = "Package name", Value = (ratingForPrimaryFrontCrashPrevention.forwardCollisionWarning.availability + " " + ratingForPrimaryFrontCrashPrevention.forwardCollisionWarning.packageName) },
+                    new DataChildRowItem { Text = "Forward collision warning", Value = $"{ratingForPrimaryFrontCrashPrevention.forwardCollisionWarning.points} of 1 point" },
+                    new DataChildRowItem { Text = "Low-speed autobrake", Value = $"{ratingForPrimaryFrontCrashPrevention.autobrake.lowSpeedPoints} of 2 points" },
+                    new DataChildRowItem { Text = "High-speed autobrake", Value = $"{ratingForPrimaryFrontCrashPrevention.autobrake.highSpeedPoints} of 3 points" }
+                };
             }
-            //  Yes this^ is returning the nr gamp every time ¯\_(ツ)_/¯ I'll fix it later
 
             HeadlightRating ratingForPrimaryHeadlights = firstSeries.headlightRatings.Where(w => w.isPrimary == true).FirstOrDefault();
-            group.Add(new RatingGroupHeader { TestType = ETestTypes.Headlight, Text = "Headlights:", ImageResourceId = UiHelper.GetResourceGamp(ratingForPrimaryHeadlights?.overallRating) });
-
-            expandList.Add(group[0], smallOverlapFront);
-            expandList.Add(group[1], moderateOverlapFront);
-            expandList.Add(group[2], side);
-            expandList.Add(group[3], roofStrength);
-            expandList.Add(group[4], headRestraint);
-
-            if (frontCrashPrevention != null)
+            var headlightsGh = new RatingGroupHeader { TestType = ETestTypes.Headlight, Text = "Headlights", QualifyingText = ratingForPrimaryHeadlights?.qualifyingText, ImageResourceId = UiHelper.GetResourceGamp(ratingForPrimaryHeadlights?.overallRating) };
+            group.Add(headlightsGh);
+            List<Java.Lang.Object> headlights = new List<Java.Lang.Object>();
+            if (ratingForPrimaryHeadlights != null)
             {
-                expandList.Add(group[5], frontCrashPrevention);
-                expandList.Add(group[6], headlights);
+                headlights = new List<Java.Lang.Object>
+                {
+                    //new DataChildRowItem { Text = "Trim Level(s)", Value = StringHelper.SmartAppend(", ",ratingForPrimaryHeadlights.trims.Select(s => $"{s.description}({s.optionalPackage})").ToArray())},
+                    new DataChildRowItem { Text = "Low-beam headlight type", Value = ratingForPrimaryHeadlights.sourceLowBeamDescription },
+                    new DataChildRowItem { Text = "High-beam headlight type", Value = ratingForPrimaryHeadlights.sourceHighBeamDescription },
+                    new DataChildRowItem { Text = "Curve-adaptive?", Value = ratingForPrimaryHeadlights.curveAdaptive ? "yes" : "no" },
+                    new DataChildRowItem { Text = "Automatically switches between low beams and high beams (high-beam assist)?", Value = ratingForPrimaryHeadlights.highBeamAssist ? "yes" : "no"}
+                };
             }
-            else
+
+            expandList.Add(smallOverlapGh, smallOverlapFront);
+            expandList.Add(frontalGh, moderateOverlapFront);
+            expandList.Add(sideGh, side);
+            expandList.Add(roofGh, roofStrength);
+            expandList.Add(rearGh, headRestraint);
+
+            if (ratingForPrimaryFrontCrashPrevention != null)
             {
-                expandList.Add(group[5], headlights);
+                expandList.Add(aebGh, frontCrashPrevention);                
             }
+
+            if (ratingForPrimaryHeadlights != null)
+                expandList.Add(headlightsGh, headlights);
 
             return new ExpandableListViewAdapter(context, group, expandList);
         }
@@ -214,7 +239,7 @@ namespace IIHSApiApp.Framework
 
         public override bool IsChildSelectable(int groupPosition, int childPosition)
         {
-            return true;
+            return false;
         }
     }
 }

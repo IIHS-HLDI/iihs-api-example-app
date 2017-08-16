@@ -1,4 +1,4 @@
-﻿namespace IIHSApiApp
+﻿namespace IIHSApiApp.Models
 {
     public class Class
     {

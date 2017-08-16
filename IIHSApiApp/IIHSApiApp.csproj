@@ -143,7 +143,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Activities\ActivityBaseHelper.cs" />
+    <Compile Include="Activities\ActivityHelper.cs" />
     <Compile Include="Activities\BaseActivity.cs" />
     <Compile Include="Activities\ClassSeriesRatingsActivity.cs" />
     <Compile Include="Activities\HelpActivity.cs" />
@@ -151,6 +151,7 @@
     <Compile Include="Activities\MenuActivity.cs" />
     <Compile Include="Activities\SettingsActivity.cs" />
     <Compile Include="Controls\AebGroupRatingHeader.cs" />
+    <Compile Include="Controls\GampChildRow.cs" />
     <Compile Include="Controls\GampGroupRatingHeader.cs" />
     <Compile Include="Controls\GroupControlHeader.cs" />
     <Compile Include="Controls\RatingGroupHeaderFactory.cs" />
@@ -159,8 +160,29 @@
     <Compile Include="Framework\ApiCache.cs" />
     <Compile Include="Framework\DialogHelper.cs" />
     <Compile Include="Framework\ExpandableListViewAdapter.cs" />
+    <Compile Include="Framework\StringHelper.cs" />
     <Compile Include="Framework\UiHelper.cs" />
+    <Compile Include="Models\Autobrake.cs" />
+    <Compile Include="Models\BuiltAfter.cs" />
     <Compile Include="Models\ETestTypes.cs" />
+    <Compile Include="Models\ForwardCollisionWarning.cs" />
+    <Compile Include="Models\FrontalRatingsModerateOverlap.cs" />
+    <Compile Include="Models\FrontalRatingsSmallOverlap.cs" />
+    <Compile Include="Models\FrontCrashPreventionRating.cs" />
+    <Compile Include="Models\HeadlightRating.cs" />
+    <Compile Include="Models\OverallRating.cs" />
+    <Compile Include="Models\Photo.cs" />
+    <Compile Include="Models\RatingGroupHeader.cs" />
+    <Compile Include="Models\RearRating.cs" />
+    <Compile Include="Models\RolloverRating.cs" />
+    <Compile Include="Models\SeriesRatingsData.cs" />
+    <Compile Include="Models\SideRating.cs" />
+    <Compile Include="Models\SupportingTestFront.cs" />
+    <Compile Include="Models\SupportingTestSide.cs" />
+    <Compile Include="Models\SupportingTestSmallOverlap.cs" />
+    <Compile Include="Models\TopSafetyPick.cs" />
+    <Compile Include="Models\Trim.cs" />
+    <Compile Include="Models\Video.cs" />
     <Compile Include="Services\ApiClientService.cs" />
     <Compile Include="Framework\ApiConfig.cs" />
     <Compile Include="Services\ApiService.cs" />
@@ -173,7 +195,6 @@
     <Compile Include="Fragments\TeensFragment.cs" />
     <Compile Include="Models\MakesModels.cs" />
     <Compile Include="Models\Series.cs" />
-    <Compile Include="Models\SeriesRatings.cs" />
     <Compile Include="Activities\SeriesRatingsActivity.cs" />
     <Compile Include="Activities\RatingsInfoActivity.cs" />
     <Compile Include="Activities\MainActivity.cs" />
@@ -229,10 +250,13 @@
     <AndroidResource Include="Resources\layout\GampGroupRatingHeader.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\item_layout.axml">
+    <AndroidResource Include="Resources\layout\GampChildRow.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\AebGroupRatingHeader.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\DataChildRow.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -390,7 +414,9 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\ca_0.xml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="api-key.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
