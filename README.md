@@ -3,6 +3,18 @@
 
 # Overview
 
+<p align="center">
+	<a href="https://github.com/MrPickles2009/iihs-api-example-app" rel="nofollow">
+		<img src="https://img.shields.io/badge/build-passing-brightgreen.svg" alt="Build Status">
+	</a>  
+  <a href="https://github.com/MrPickles2009/iihs-api-example-app/blob/github/License.md">
+		<img src="https://img.shields.io/badge/license-Apache%202.0-yellowgreen.svg" alt="license">
+	</a>
+	<a href="https://github.com/MrPickles2009/iihs-api-example-app/releases">
+		<img src="https://img.shields.io/badge/release-v1.1.0-blue.svg" alt="1.1.0">
+	</a>
+</p>
+
 This repository contains code for a mobile android app that will display data from the IIHS Ratings API website at [https://api.iihs.org](https://api.iihs.org) in an intuitive and consumer friendly layout.  
 
 # Installation
