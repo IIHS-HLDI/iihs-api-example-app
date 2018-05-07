@@ -32,7 +32,7 @@ namespace IIHSApiApp.Activities
 
         protected async override void OnCreate(Bundle savedInstanceState)
         {
-            service = new ApiService(ApiConfig.ApiKey);
+            service = new ApiService(ApiTokenConfig.ApiTokenKey);
 
             base.OnCreate(savedInstanceState);
 

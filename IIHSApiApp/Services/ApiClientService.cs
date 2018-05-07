@@ -13,12 +13,13 @@ namespace IIHSApiApp.Services
         HttpClient client;
         private string rootUrl;
         
-        public ApiClientService(string apiKey)
+        public ApiClientService(string apiTokenKey)
         {
             client = new HttpClient();
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            client.DefaultRequestHeaders.Add("IIHS-apikey", apiKey);
+            client.DefaultRequestHeaders.Add("IIHS-accountname", "mrpickles2009");
+            client.DefaultRequestHeaders.Add("IIHS-auth", apiTokenKey);
 
             rootUrl = "https://api.iihs.org/v4/";
         }

@@ -40,7 +40,7 @@ namespace IIHSApiApp.Activities
             SetContentView(Resource.Layout.Main);
             RequestedOrientation = ScreenOrientation.Portrait;
 
-            service = new ApiService(ApiConfig.ApiKey);
+            service = new ApiService(ApiTokenConfig.ApiTokenKey);
 
             Button enterButton = FindViewById<Button>(Resource.Id.enterButton);
             enterButton.Click += EnterButton_Click;
