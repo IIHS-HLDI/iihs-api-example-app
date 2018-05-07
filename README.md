@@ -46,3 +46,7 @@ To run the app on a/an:
   - Go to '_Settings_' > '_Developer options_' and select '_USB debugging_' to be '**On**'
   - In Visual Studio select the physical device in the debug selection box and press '_Start Debugging_' (F5)
   - If this does not work you can _Right Click_ on the solution and select '_Deploy_'
+  
+## License
+
+[Apache 2.0](License.md)
