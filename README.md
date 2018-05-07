@@ -15,7 +15,9 @@
 	</a>
 </p>
 
-This repository contains code for a mobile android app that will display data from the IIHS Ratings API website at [https://api.iihs.org](https://api.iihs.org) in an intuitive and consumer friendly layout.  
+This repository contains code for a mobile android app that will display data from the IIHS Ratings API website at [https://api.iihs.org](https://api.iihs.org) in an intuitive and consumer friendly layout.
+
+<a href='https://play.google.com/store/apps/details?id=com.brokencapodevelopment.iihsapiapp&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' height='80px'/></a>
 
 # Installation
 
