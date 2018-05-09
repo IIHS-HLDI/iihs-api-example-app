@@ -3,7 +3,21 @@
 
 # Overview
 
-This repository contains code for a mobile android app that will display data from the IIHS Ratings API website at [https://api.iihs.org](https://api.iihs.org) in an intuitive and consumer friendly layout.  
+<p align="center">
+	<a href="https://github.com/MrPickles2009/iihs-api-example-app" rel="nofollow">
+		<img src="https://img.shields.io/badge/build-passing-brightgreen.svg" alt="Build Status">
+	</a>  
+  <a href="https://github.com/MrPickles2009/iihs-api-example-app/blob/github/License.md">
+		<img src="https://img.shields.io/badge/license-Apache%202.0-yellowgreen.svg" alt="license">
+	</a>
+	<a href="https://github.com/MrPickles2009/iihs-api-example-app/releases">
+		<img src="https://img.shields.io/badge/release-v1.1.0-blue.svg" alt="1.1.0">
+	</a>
+</p>
+
+This repository contains code for a mobile android app that will display data from the IIHS Ratings API website at [https://api.iihs.org](https://api.iihs.org) in an intuitive and consumer friendly layout.
+
+<a href='https://play.google.com/store/apps/details?id=com.brokencapodevelopment.iihsapiapp&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' height='80px'/></a>
 
 # Installation
 
@@ -34,3 +48,7 @@ To run the app on a/an:
   - Go to '_Settings_' > '_Developer options_' and select '_USB debugging_' to be '**On**'
   - In Visual Studio select the physical device in the debug selection box and press '_Start Debugging_' (F5)
   - If this does not work you can _Right Click_ on the solution and select '_Deploy_'
+  
+## License
+
+[Apache 2.0](License.md)

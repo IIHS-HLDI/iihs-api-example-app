@@ -22,7 +22,7 @@ namespace IIHSApiApp.Fragments
         {
             base.OnCreate(savedInstanceState);
 
-            service = new ApiService(ApiConfig.ApiKey);
+            service = new ApiService(ApiTokenConfig.ApiTokenKey);
         }
 
         public static ClassesFragment NewInstance()

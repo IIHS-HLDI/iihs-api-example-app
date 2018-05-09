@@ -11,9 +11,9 @@ namespace IIHSApiApp.Services
     {
         ApiClientService client;
 
-        public ApiService(string apiKey)
+        public ApiService(string apiTokenKey)
         {
-            client = new ApiClientService(apiKey);
+            client = new ApiClientService(apiTokenKey);
         }
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace IIHSApiApp.Services
         /// <returns></returns>
         public async Task<List<Make>> GetMakes()
         {
-            var url = $"ratings/all-makes";
+            var url = $"ratings/all-makes?";
             return await client.GetAsync<List<Make>>(url);
         }
 
@@ -32,7 +32,7 @@ namespace IIHSApiApp.Services
         /// <returns></returns>
         public async Task<List<Class>> GetClasses()
         {
-            var url = $"ratings/all-classes";
+            var url = $"ratings/all-classes?";
             return await client.GetAsync<List<Class>>(url);
         }
 
@@ -43,7 +43,7 @@ namespace IIHSApiApp.Services
         /// <returns></returns>
         public async Task<List<MakesModels>> GetMakesModels(string slugClass)
         {
-            var url = $"ratings/makemodels-for-class/{slugClass}";
+            var url = $"ratings/makemodels-for-class/{slugClass}?";
             return await client.GetAsync<List<MakesModels>>(url);
         }
 
@@ -54,7 +54,7 @@ namespace IIHSApiApp.Services
         /// <returns></returns>
         public async Task<List<Series>> GetAllSeries(string makeSlug)
         {
-            var url = $"ratings/all-series/{makeSlug}";
+            var url = $"ratings/all-series/{makeSlug}?";
             return await client.GetAsync<List<Series>>(url);
         }
 
@@ -66,7 +66,7 @@ namespace IIHSApiApp.Services
         /// <returns></returns>
         public async Task<List<Year>> GetModelYearsForSeries(string makeSlug, string slugSeries)
         {
-            var url = $"ratings/modelyears-for-series/{makeSlug}/{slugSeries}";
+            var url = $"ratings/modelyears-for-series/{makeSlug}/{slugSeries}?";
             return await client.GetAsync<List<Year>>(url);
         }
 
@@ -79,7 +79,7 @@ namespace IIHSApiApp.Services
         /// <returns></returns>
         public async Task<List<SeriesRatingsData>> GetSeriesRatings(string year, string makeSlug, string slugSeries)
         {
-            var url = $"ratings/single/{year}/{makeSlug}/{slugSeries}";
+            var url = $"ratings/single/{year}/{makeSlug}/{slugSeries}?";
             return await client.GetAsync<List<SeriesRatingsData>>(url);
         }
     }

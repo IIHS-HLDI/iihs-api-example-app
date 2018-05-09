@@ -23,7 +23,7 @@ namespace IIHSApiApp.Fragments
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);            
-            service = new ApiService(ApiConfig.ApiKey);
+            service = new ApiService(ApiTokenConfig.ApiTokenKey);
             cache = ApiCache.Current;
         }
 

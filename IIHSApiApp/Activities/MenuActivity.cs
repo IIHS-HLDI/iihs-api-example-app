@@ -17,11 +17,7 @@ namespace IIHSApiApp.Activities
 
         public override void OnBackPressed()
         {
-            /*
-            this is blank preventing the user from closing the app by pressing
-            the back button. I prefer this but I did just switch over to
-            android from iOS.
-            */ 
+            drawerLayout.OpenDrawer(Android.Support.V4.View.GravityCompat.Start);
         }
 
         protected override int LayoutResource

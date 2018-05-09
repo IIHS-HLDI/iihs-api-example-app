@@ -9,3 +9,4 @@ To be implimented:
 - create a widget that displays the top safety pick or something or displays this rss feed: http://feeds.feedburner.com/iihs
 - add a mode allowing for side-by-side comparison of two vehicles
 - add search ability to find a vehicle
+- add OnBackPressed() opens drawer when on menuactivity
